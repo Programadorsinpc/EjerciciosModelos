@@ -2,7 +2,13 @@ class Nodo:
         def __init__(self, valor, hijos = []):
             self.valor = valor
             self.hijos = hijos
-	
+
+def buscar_Hijos(lista, valor):
+            if lista == []:
+                    return False
+            else:
+                    return buscar(lista[0], valor) or buscar_Hijos(lista[1:], valor)		
+		
 def buscar(arbol, valor):
             if arbol == None:
                     return False
@@ -10,12 +16,6 @@ def buscar(arbol, valor):
                     return True
             else:
                     return buscar_Hijos(arbol.hijos, valor)
-
-def buscar_Hijos(lista, valor):
-            if lista == []:
-                    return False
-            else:
-                    return buscar(lista[0], valor) or buscar_Hijos(lista[1:], valor)
                 
 
 arbolEneario = Nodo(0,[Nodo(1,[Nodo(11), Nodo(12,[Nodo(121)]), Nodo(13,[Nodo(131),Nodo(132)])]),
@@ -24,6 +24,7 @@ arbolEneario = Nodo(0,[Nodo(1,[Nodo(11), Nodo(12,[Nodo(121)]), Nodo(13,[Nodo(131
                        
                        
 
-print (buscar(arbolEneario, 31))
-print (buscar(arbolEneario, 3))
+print (buscar(arbolEneario, 121))
+print (buscar(arbolEneario, 32))
+print (buscar_Hijos(arbolEneario, 132))
 		
